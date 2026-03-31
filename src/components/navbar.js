@@ -2,111 +2,94 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [desktopDropdown, setDesktopDropdown] = useState(null);
   const [mobileDropdown, setMobileDropdown] = useState(null);
+  const [isActive, setIsActive] = useState("/")
 
-  const router = useRouter();
   const pathname = usePathname();
   const dropdownRef = useRef(null);
 
-  const structuredLinks = [
+  const structuredPages = [
     {
       name: "Home",
       href: "/",
-      sublinks: [
-        { label: "Crisis", href: "/#crisis" },
-        { label: "Our Approach", href: "/#why-tvgf" },
-        { label: "Vision", href: "/#vision" },
-        { label: "North Star", href: "/#north-star" },
-        { label: "Core Values", href: "/#core-values" },
-        { label: "The Gaps", href: "/#the-gaps" },
-      ],
+      subpages: []
+    },
+    {
+      name: "About Us",
+      href: "/about",
+      subpages: [
+        { label: "Our Story", href: "/about/story", desc: "The SPACE framework and our mission." },
+        { label: "Founder Story", href: "/about/founder", desc: "Anurag Maloo's survival and vision." },
+        { label: "Team & Advisors", href: "/about/team", desc: "The people driving the movement." },
+        { label: "Partners & Networks", href: "/about/partners", desc: "Our institutional collaborators." }
+      ]
     },
     {
       name: "Why Glaciers Matter",
-      href: "/GlacierMatters",
-      sublinks: [
-        { label: "Cryosphere Crisis", href: "/GlacierMatters#cryosphere-crisis" },
-        { label: "The Hindu Kush Himalaya", href: "/GlacierMatters#Kush-Himalaya" },
-        { label: "What If Glaciers Disappear", href: "/GlacierMatters#Disappear" }
-      ],
+      href: "/why-glaciers-matter",
+      subpages: [
+        { label: "The Crisis", href: "/why-glaciers-matter/crisis", desc: "The systemic risk of glacier loss." },
+        { label: "The Preparedness Gap", href: "/why-glaciers-matter/gap", desc: "Why communities are left vulnerable." },
+        { label: "The Decisive Decade", href: "/why-glaciers-matter/decade", desc: "The narrow window for action." }
+      ]
     },
     {
-      name: "Our Strategy",
-      href: "/ourStrategy",
-      sublinks: [
-        { label: "Vision & Mission", href: "/ourStrategy#vision-mission" },
-        { label: "North Star", href: "/ourStrategy#north-star" },
-        { label: "Core Values", href: "/ourStrategy#core-values" },
-        { label: "Gaps We Bridge", href: "/ourStrategy#gaps" },
-        { label: "The Three-Engine Model", href: "/ourStrategy#The-Three-Engine-Model" },
-        { label: "Dual-Force Action", href: "/ourStrategy#Dual-Force-Action" },
-        
-        { label: "Solution Pillars", href: "/ourStrategy#Solution-pillars" },
-        
-        { label: "Theory of Change", href: "/ourStrategy#Theory-of-Change" },
-      ],
-    },
-    {
-      name: "Programs & Initiatives",
+      name: "Programs",
       href: "/programs",
-      sublinks: [
-        { label: "Our Programs", href: "/programs#glacierx-gatherings" },
-        { label: "International Efforts", href: "/programs#ourPrograms" }
-      ],
-    },
-    {
-      name: "Learn",
-      href: "/Learn",
-      sublinks: [
-        { label: "Introduction", href: "/Learn#introduction" },
-        { label: "Explore", href: "/Learn#explore" },
-        { label: "Glacier Data", href: "/Learn#glacier-data" },
-        { label: "Glossary", href: "/Learn#glossary" },
-        { label: "Partners", href: "/Learn#partners" },
-        { label: "Join Us", href: "/Learn#join" },
-      ],
+      subpages: [
+        { label: "Glacier Dialogues", href: "/programs/glacier-dialogues", desc: "Monthly policy dialogue series." },
+        { label: "Glacier Guardians Fellowship", href: "/programs/glacier-guardians-fellowship", desc: "Empowering youth climate leaders." },
+        { label: "GlacierX Festival", href: "/programs/glacierx-festival", desc: "Convergence of science, art, and policy." },
+        { label: "Time Markers", href: "/programs/time-markers", desc: "Installations at historical recession lines." },
+        { label: "HCSN", href: "/programs/hcsn", desc: "Himalayan Climate Sentinels Network." },
+        { label: "GlacierX Platform", href: "/programs/glacierx-platform", desc: "Open Digital Public Good infrastructure." }
+      ]
     },
     {
       name: "Get Involved",
-      href: "/collaborate",
-      sublinks: [
-        { label: "Partners", href: "/collaborate#partners" },
-        { label: "Join Us", href: "/collaborate#join" },
-      ],
+      href: "/get-involved",
+      subpages: [
+        { label: "Partner With Us", href: "/get-involved/partner", desc: "Institutional and funding partnerships." },
+        { label: "Volunteer & Internships", href: "/get-involved/volunteer", desc: "Contribute your skills to the cause." },
+        { label: "Join as Glacier Guardian", href: "/get-involved/glacier-guardian", desc: "Become part of the community." }
+      ]
     },
     {
       name: "Media",
       href: "/media",
-      sublinks: [
-        { label: "Go to media", href: "/media" }
-      ],
-    },
-    
-    { name: "Glacier Dialogues", href: "/glacierDialgoues", sublinks: [{ label: "Go to Dialgoues", href: "/glacierDialgoues" }] }
+      subpages: [
+        { label: "Press & News", href: "/media/press", desc: "Latest coverage and announcements." },
+        { label: "Glacier Dialogues Sessions", href: "/media/sessions", desc: "Archive of past dialogues." },
+        { label: "Publications & Reports", href: "/media/publications", desc: "Research and policy briefs." },
+        { label: "Photography & Film", href: "/media/visual", desc: "Visuals from the frontlines." }
+      ]
+    }
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 60) {
+      if (window.scrollY > 60) {
         setShowNavbar(false);
       } else {
         setShowNavbar(true);
       }
-      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
+
+  useEffect(() => {
+    setIsActive(pathname)
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -118,34 +101,14 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleSmoothScroll = async (href) => {
-    const [path, hash] = href.split("#");
-
-    if (hash) {
-      if (pathname !== path) {
-        await router.push(path);
-        setTimeout(() => {
-          const el = document.getElementById(hash);
-          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 300);
-      } else {
-        const el = document.getElementById(hash);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    } else {
-      router.push(href);
-    }
-  };
-
   return (
     <nav
-      className={`fixed w-full z-50 transition-transform duration-300 font-cabin rounded-b-xl  ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      } border-b border-white/20 bg-glacier-primary shadow-sm`}
+      className={`fixed w-full z-50 transition-transform duration-300 font-cabin rounded-b-xl  ${showNavbar ? "translate-y-0" : ""
+        } border-b border-white/20 bg-glacier-primary shadow-sm`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex justify-between h-14 items-center">
-          
+
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
@@ -159,48 +122,67 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div
-            className="hidden md:flex md:space-x-4 lg:space-x-6 items-center relative"
-            ref={dropdownRef}
-          >
-            {structuredLinks.map((link) => (
-              <div key={link.name} className="relative">
-                <button
-                  onClick={() =>
-                    setDesktopDropdown(
-                      desktopDropdown === link.name ? null : link.name
-                    )
-                  }
-                  className="flex items-center gap-1 
-                             text-white font-medium
-                             text-xs md:text-[11px] lg:text-sm
-                             hover:text-glacier-dark transition-colors"
+          <div className="hidden md:flex flex-1 items-center justify-end" ref={dropdownRef}>
+            <div className="flex md:space-x-4 lg:space-x-6 items-center h-full mr-6">
+              {structuredPages.map((page) => (
+                <div
+                  key={page.name}
+                  className="relative h-14 flex items-center"
+                  onMouseEnter={() => setDesktopDropdown(page.name)}
+                  onMouseLeave={() => setDesktopDropdown(null)}
                 >
-                  {link.name}
-                  {link.sublinks?.length > 0 && <ChevronDown size={14} />}
-                </button>
+                  {/* Main Nav Link */}
+                  <Link
+                    href={page.href}
+                    className={`flex items-center gap-1 text-white font-medium text-xs md:text-[13px] lg:text-sm hover:text-glacier-dark transition-colors font-nohemi ${isActive === page.href ? "underline" : ""}`}
+                  >
+                    {page.name}
+                    {page.subpages?.length > 0 && <ChevronDown size={14} />}
+                  </Link>
 
-                {link.sublinks?.length > 0 &&
-                  desktopDropdown === link.name && (
-                    <div className="absolute left-0 top-full mt-2 w-56 bg-white text-black rounded-md shadow-lg z-10">
-                      {link.sublinks.map((sublink) => (
-                        <a
-                          key={sublink.label}
-                          href={sublink.href}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setDesktopDropdown(null);
-                            handleSmoothScroll(sublink.href);
-                          }}
-                          className="block px-4 py-2 text-sm hover:bg-gray-100"
-                        >
-                          {sublink.label}
-                        </a>
-                      ))}
+                  {/* Dropdown */}
+                  {page.subpages?.length > 0 && desktopDropdown === page.name && (
+                    <div className="fixed left-0 top-14 w-full bg-white text-black shadow-lg border-t border-gray-100 z-50">
+                      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+                          {page.subpages.map((subpage) => (
+                            <Link
+                              key={subpage.label}
+                              href={subpage.href}
+                              onClick={() => setDesktopDropdown(null)}
+                              className="block group"
+                            >
+                              <h3 className="text-glacier-dark font-semibold text-base mb-1 group-hover:text-glacier-primary transition-colors font-nohemi">
+                                {subpage.label}
+                              </h3>
+                              <p className="text-gray-600 text-sm font-cabin leading-relaxed group-hover:text-gray-900 transition-colors">
+                                {subpage.desc}
+                              </p>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   )}
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex items-center gap-3 border-l border-white/20 pl-6">
+              <Link
+                href="/get-involved/partner"
+                className="hidden lg:flex items-center justify-center px-4 py-2 border-2 border-glacier-primary text-white hover:bg-glacier-primary text-sm font-medium rounded-md transition-colors font-cabin"
+              >
+                Partner With Us
+              </Link>
+              <Link
+                href="/get-involved/glacier-guardian"
+                className="flex items-center justify-center px-4 py-2 bg-glacier-dark text-white hover:bg-glacier-dark/90 text-sm font-medium rounded-md transition-colors font-cabin"
+              >
+                Join as Glacier Guardian
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Toggle */}
@@ -210,19 +192,20 @@ export default function Navbar() {
                 setIsOpen(!isOpen);
                 setMobileDropdown(null);
               }}
-              className="text-white"
+              className="text-white hover:text-glacier-dark transition-colors"
               aria-label="Toggle Menu"
             >
               {isOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
           </div>
+
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden px-4 pt-3 pb-6 space-y-4 backdrop-blur-md shadow-md border-t border-white/20">
-          {structuredLinks.map((link) => (
+          {structuredPages.map((link) => (
             <div key={link.name}>
               <button
                 onClick={() =>
@@ -233,25 +216,23 @@ export default function Navbar() {
                 className="w-full flex justify-between items-center text-left text-white font-medium text-base py-2"
               >
                 {link.name}
-                {link.sublinks?.length > 0 && <ChevronDown size={16} />}
+                {link.subpages?.length > 0 && <ChevronDown size={16} />}
               </button>
 
-              {mobileDropdown === link.name && link.sublinks?.length > 0 && (
+              {mobileDropdown === link.name && link.subpages?.length > 0 && (
                 <div className="ml-4 mt-2 space-y-2">
-                  {link.sublinks.map((sublink) => (
-                    <a
-                      key={sublink.label}
-                      href={sublink.href}
-                      onClick={async (e) => {
-                        e.preventDefault();
+                  {link.subpages.map((subpage) => (
+                    <Link
+                      key={subpage.label}
+                      href={subpage.href}
+                      onClick={() => {
                         setIsOpen(false);
                         setMobileDropdown(null);
-                        await handleSmoothScroll(sublink.href);
                       }}
-                      className="block text-white text-sm hover:text-cyan-300 transition-colors"
+                      className="block text-white text-sm hover:text-glacier-primary transition-colors font-cabin"
                     >
-                      {sublink.label}
-                    </a>
+                      {subpage.label}
+                    </Link>
                   ))}
                 </div>
               )}
