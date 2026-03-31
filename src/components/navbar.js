@@ -32,11 +32,11 @@ export default function Navbar() {
     },
     {
       name: "Why Glaciers Matter",
-      href: "/GlacierMatters",
+      href: "/why-glaciers-matter",
       sublinks: [
-        { label: "Cryosphere Crisis", href: "/GlacierMatters#cryosphere-crisis" },
-        { label: "The Hindu Kush Himalaya", href: "/GlacierMatters#Kush-Himalaya" },
-        { label: "What If Glaciers Disappear", href: "/GlacierMatters#Disappear" }
+        { label: "The Crisis", href: "/why-glaciers-matter/crisis" },
+        { label: "The Preparedness Gap", href: "/why-glaciers-matter/gap" },
+        { label: "The Decisive Decade", href: "/why-glaciers-matter/decade" }
       ],
     },
     {
