@@ -6,43 +6,37 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { ArrowRight, Handshake } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
-  const containerRef = useRef(null);
+  const heroRef = useRef(null);
   const skyRef = useRef(null);
-  const mountainBackRef = useRef(null);
-  const mountainFrontRef = useRef(null);
+  const mountainRef = useRef(null);
   const foregroundRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+
       gsap.to(skyRef.current, {
-        y: 400,
+        yPercent: 15,
+        scale: 1.05,
+        ease: "none",
         scrollTrigger: {
-          trigger: containerRef.current,
+          trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
           scrub: true,
         },
       });
 
-      gsap.to(mountainBackRef.current, {
-        y: 300,
+      gsap.to(mountainRef.current, {
+        yPercent: 5,
+        scale: 1.05,
+        ease: "none",
         scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      gsap.to(mountainFrontRef.current, {
-        y: 380,
-        scrollTrigger: {
-          trigger: containerRef.current,
+          trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
           scrub: true,
@@ -50,61 +44,67 @@ export default function HeroSection() {
       });
 
       gsap.to(foregroundRef.current, {
-        y: 460,
+        yPercent: -5,
+        scale: 1.05,
+        ease: "none",
         scrollTrigger: {
-          trigger: containerRef.current,
+          trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
           scrub: true,
         },
       });
-    }, containerRef);
+    }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative h-screen w-full overflow-hidden "
+    <section 
+      ref={heroRef} 
+      className="relative w-full h-[100vh] min-h-[600px] overflow-hidden bg-glacier-navy"
     >
-      {/* 🌌 Sky */}
-      <img
+      {/* Layer 1 */}
+      <div 
         ref={skyRef}
-        src="/sky_1.png"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        alt="Sky"
+        className="absolute left-0 top-0 w-full z-0 bg-cover bg-center"
+        style={{ 
+          backgroundImage: "url('/home/bg-main.jpg')",
+          height: "120%", 
+        }}
       />
 
-      {/* 🏔️ Mountain Back */}
-      <img
-        ref={mountainBackRef}
-        src="https://cdn.prod.website-files.com/64a42bd57fd800fb6bf3fda5/64a45475c6e7d2c9ca1f00b6_1.webp"
-        className="absolute bottom-0 w-full h-full object-cover z-30"
-        alt="Mountain Back"
+      {/* Layer 2 */}
+      <div 
+        ref={mountainRef}
+        className="absolute left-0 top-0 w-full z-10 bg-cover bg-center"
+        style={{ 
+          backgroundImage: "url('/home/mid-mountains.png')",
+          height: "120%",
+        }}
       />
 
-      {/* 🏔️ Mountain Front */}
-      <img
-        ref={mountainFrontRef}
-        src="https://cdn.prod.website-files.com/64a42bd57fd800fb6bf3fda5/64a451f79db2e31a240ef39e_2.webp"
-        className="absolute bottom-0 w-full h-full object-cover z-20"
-        alt="Mountain Front"
-      />
-
-      {/* 🌄 Foreground */}
-      <img
+      {/* Layer 3 */}
+      <div 
         ref={foregroundRef}
-        src="https://cdn.prod.website-files.com/64a42bd57fd800fb6bf3fda5/64a45467c6e7d2c9ca1eecba_3.webp"
-        className="absolute bottom-0 w-full h-full object-cover z-10 "
-        alt="Foreground"
+        className="absolute left-0 w-full z-20 bg-cover bg-bottom bg-no-repeat"
+        style={{ 
+          backgroundImage: "url('/home/front-green.png')",
+          height: "120%",
+          bottom: "-20%",
+        }}
       />
 
-      {/* 🔥 Hero Content */}
+      {/* Color Grading Overlay */}
+      <div className="absolute inset-0 z-30 pointer-events-none bg-glacier-teal/10 mix-blend-overlay" />
+
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-glacier-navy/90 to-transparent z-30 pointer-events-none" />
+
+      {/* Hero Content */}
       <div className="absolute inset-0 z-40 flex flex-col items-center justify-center text-center text-white px-6">
-        
+
         {/* 🧊 Hero Logo */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -118,14 +118,14 @@ export default function HeroSection() {
             className="w-40 md:w-56 lg:w-64 h-auto object-contain"
             priority
           />
-        </motion.div>
+        </motion.div> */}
 
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-2xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-4xl"
+          className="text-3xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-4xl font-nohemi drop-shadow-lg"
         >
           Protecting Glaciers.
           <br />
@@ -137,9 +137,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-6 text-sm md:text-xl text-white/90 max-w-2xl"
+          className="mt-6 text-sm md:text-xl text-white max-w-2xl font-medium font-cabin drop-shadow-md"
         >
-          Enabling communities to adapt, lead and act in a changing climate.
+          A Section 8 nonprofit building preparedness and institutional capacity in glacier-dependent regions of the Hindu Kush Himalaya.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -147,21 +147,25 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-10 flex md:gap-5 gap-2"
+          className="mt-10 flex flex-wrap md:flex-nowrap gap-4 md:gap-5 justify-center"
         >
-          <Link href="#crisis">
-            <Button className="bg-glacier-primary md:text-base text-xs hover:bg-glacier-dark md:px-8 md:py-4 px-4 py-2 text-white">
-              Learn More
+          {/* Primary CTA */}
+          <Link href="/get-involved/glacier-guardian">
+            <Button className="group bg-glacier-navy hover:bg-glacier-navy/95 text-white font-cabin text-base font-medium rounded-lg p-6 transition-all duration-300 hover:scale-[1.02] shadow-md">
+              <span className="flex items-center gap-2">
+                Join as Glacier Guardian
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
             </Button>
           </Link>
 
-
-          <Link href="/collaborate">
-            <Button
-              variant="outline"
-              className="border-white text-white bg-white/10 hover:bg-white/20 md:px-8  md:py-4 px-4 py-2 md:text-base text-xs"
-            >
-              Partner With Us
+          {/* Secondary CTA */}
+          <Link href="/get-involved/partner">
+            <Button className="group bg-white/1 backdrop-blur-sm border-2 border-glacier-teal/80 hover:border-glacier-teal text-white hover:bg-glacier-teal/20 font-cabin text-base font-medium rounded-lg p-6 transition-all duration-300 hover:scale-[1.02]">
+              <span className="flex items-center gap-2">
+                <Handshake className="w-4 h-4 opacity-80" />
+                Partner With Us
+              </span>
             </Button>
           </Link>
         </motion.div>

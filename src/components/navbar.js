@@ -94,11 +94,11 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // If the click is outside the entire navbar structure
+
       if (navRef.current && !navRef.current.contains(event.target)) {
-        setDesktopDropdown(null); // Close desktop mega-menu
-        setMobileDropdown(null);  // Close mobile accordion sub-menus
-        setIsOpen(false);         // Close the entire mobile drawer
+        setDesktopDropdown(null);
+        setMobileDropdown(null);
+        setIsOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -303,20 +303,8 @@ export default function Navbar() {
 
               {/* Mobile CTAs */}
               <div className="pt-4 flex flex-col gap-3 border-t border-white/20 mt-4">
-                <Link
-                  href="/get-involved/partner"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center px-4 py-2 border-2 border-white text-white hover:bg-white hover:text-glacier-navy text-sm font-medium rounded-md transition-colors font-cabin"
-                >
-                  Partner With Us
-                </Link>
-                <Link
-                  href="/get-involved/glacier-guardian"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center px-4 py-2 bg-glacier-teal text-white hover:bg-glacier-teal/90 text-sm font-medium rounded-md transition-colors font-cabin"
-                >
-                  Join as Glacier Guardian
-                </Link>
+                <PartnerWithUsButton onclick={() => setIsOpen(false)} />
+                <JoinAsGlacierGuardianButton onClick={() => setIsOpen(false)} />
               </div>
 
             </div>
@@ -325,4 +313,28 @@ export default function Navbar() {
       </AnimatePresence>
     </nav>
   );
+}
+
+export const JoinAsGlacierGuardianButton = ({ onclick }) => {
+  return (
+    <Link
+      href="/get-involved/glacier-guardian"
+      onClick={onclick}
+      className="w-full flex items-center justify-center px-4 py-2 bg-glacier-teal text-white hover:bg-glacier-teal/90 text-sm font-medium rounded-md transition-colors font-cabin"
+    >
+      Join as Glacier Guardian
+    </Link>
+  )
+}
+
+export const PartnerWithUsButton = ({ onclick }) => {
+  return (
+    <Link
+      href="/get-involved/partner"
+      onClick={onclick}
+      className="w-full flex items-center justify-center px-4 py-2 border-2 border-white text-white hover:bg-white hover:text-glacier-navy text-sm font-medium rounded-md transition-colors font-cabin"
+    >
+      Partner With Us
+    </Link>
+  )
 }

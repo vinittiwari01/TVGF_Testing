@@ -3,87 +3,142 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function ProgramsInActionSection() {
+export default function ProgramsSnapshot() {
   const programs = [
     {
       title: "Glacier Dialogues",
-      description:
-        "A global conversation platform bringing scientists, youth leaders, policymakers, artists, and frontline communities together.",
-      image:
-        "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=1600",
-      link: "/programs/glacier-dialogues",
+      status: "ACTIVE",
+      statusColor: "bg-green-100 text-green-700",
+      description: "Monthly online policy dialogue series bridging scientists, policymakers, and communities.",
+      keyFact: "Running since February 2026",
+      link: "/programs/glacier-dialogues"
     },
     {
-      title: "Youth Cryosphere Fellowship",
-      description:
-        "Empowering next-generation glacier leaders through research, storytelling, and policy immersion.",
-      image:
-        "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600",
-      link: "/programs/youth-fellowship",
+      title: "Glacier Guardians Fellowship",
+      status: "LAUNCHING 2026",
+      statusColor: "bg-glacier-teal/10 text-glacier-teal",
+      description: "6-month paid fellowship in environmental science, climate policy, and mountain development.",
+      keyFact: "Ages 22–32",
+      link: "/programs/glacier-guardians-fellowship"
     },
+    {
+      title: "GlacierX Festival",
+      status: "LAUNCHING 2026",
+      statusColor: "bg-glacier-teal/10 text-glacier-teal",
+      description: "Immersive convergence of science, art, ritual, and policy.",
+      keyFact: "Himalayan region, 2026",
+      link: "/programs/glacierx-festival"
+    },
+    {
+      title: "Time Markers / Glacier Memory",
+      status: "LAUNCHING 2026",
+      statusColor: "bg-glacier-teal/10 text-glacier-teal",
+      description: "Permanent installations at historical glacier recession lines.",
+      keyFact: "Making ice loss visible.",
+      link: "/programs/time-markers"
+    }
   ];
 
   return (
-    <section className="relative h-[80vh] flex flex-col justify-center px-6 md:px-16 bg-white overflow-hidden">
-      
-      {/* Header */}
-      <div className="text-center max-w-2xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-glacier-primary">
-          Programs in Action
-        </h2>
-        <p className="mt-3 text-lg text-glacier-dark/80">
-          Turning vision into measurable impact through dialogue and collaboration.
-        </p>
-      </div>
+    <section className="w-full bg-glacier-navy py-24 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col items-center">
 
-      {/* Carousel */}
-      <div className="mt-12">
-        <div className="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 no-scrollbar">
+        {/* Headings */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-8 bg-glacier-teal"></div>
+            <h2 className="text-sm font-nohemi text-glacier-teal tracking-widest uppercase">
+              What We're Building
+            </h2>
+            <div className="h-px w-8 bg-glacier-teal"></div>
+          </div>
+          <h3 className="text-3xl md:text-5xl font-nohemi font-bold text-white">
+            Programmes in Motion
+          </h3>
+        </motion.div>
+
+        {/* 2x2 Programs Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full mb-16">
           {programs.map((program, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="snap-center shrink-0 w-[280px] md:w-[340px] aspect-square"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Link href={program.link}>
-                <div className="group relative h-full w-full rounded-2xl overflow-hidden shadow-lg cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
-                  
-                  {/* Background Image */}
-                  <img
-                    src={program.image}
-                    alt={program.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+              <Link href={program.link} className="block group h-full">
+                <div className="h-full bg-glacier-offwhite rounded-xl p-6 md:p-8 flex flex-col shadow-sm border-l-4 border-glacier-teal transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative z-0 overflow-hidden">
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition duration-500" />
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-transparent to-glacier-teal/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
 
-                  {/* Content */}
-                  <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-2xl font-bold">
-                      {program.title}
-                    </h3>
-
-                    <p className="mt-3 text-sm leading-relaxed text-white/90">
-                      {program.description}
-                    </p>
-
-                    <div className="mt-4 flex items-center font-semibold">
-                      Learn More
-                      <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">
-                        →
-                      </span>
-                    </div>
+                  {/* Status Badge */}
+                  <div className="absolute top-6 right-6">
+                    <span className={`px-3 py-1 rounded-full md:text-xs text-[10px] font-bold font-cabin tracking-wide shadow-sm transition-transform duration-300 group-hover:scale-105 ${program.statusColor}`}>
+                      {program.status}
+                    </span>
                   </div>
 
+                  {/* Content */}
+                  <div className="pr-24 mb-5">
+                    <h4 className="md:text-2xl text-xl font-nohemi font-bold text-glacier-navy group-hover:text-glacier-teal transition-colors duration-300">
+                      {program.title}
+                    </h4>
+                  </div>
+
+                  <p className="font-cabin text-glacier-warmGrey text-base leading-relaxed flex-grow mb-8">
+                    {program.description}
+                  </p>
+
+                  {/* Bottom Fact */}
+                  <div className="flex items-center justify-between mt-auto pt-5 border-t border-gray-200/60 transition-colors duration-300 group-hover:border-glacier-teal/20">
+                    <p className="font-cabin text-glacier-teal text-sm font-medium">
+                      {program.keyFact}
+                    </p>
+
+                    {/* Action Icon */}
+                    <div className="w-8 h-8 rounded-full bg-transparent group-hover:bg-glacier-teal flex items-center justify-center transition-all duration-300 border border-transparent group-hover:border-glacier-teal shadow-none group-hover:shadow-md">
+                      <svg
+                        className="w-4 h-4 text-glacier-teal group-hover:text-white transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-out"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </div>
+
+                  </div>
                 </div>
               </Link>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex justify-center mt-8"
+        >
+          <Link 
+            href="/programs" 
+            className="group inline-flex items-center gap-2 bg-transparent border-2 border-glacier-teal text-glacier-teal hover:bg-glacier-teal hover:text-white font-cabin text-base font-medium rounded-md px-8 py-4 transition-all duration-300"
+          >
+            See All Programmes
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </Link>
+        </motion.div>
+
       </div>
     </section>
   );
