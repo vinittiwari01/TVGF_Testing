@@ -135,7 +135,7 @@ export default function Story() {
           className="text-center p-8 bg-white/5 rounded-2xl hover:bg-white transition group"
         >
           <p className="text-xl italic group-hover:text-[#2A787C]">
-            "Glaciers protected legally and culturally as living entities."
+            &quot;Glaciers protected legally and culturally as living entities.&quot;
           </p>
         </motion.div>
 

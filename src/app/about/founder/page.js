@@ -62,7 +62,7 @@ export default function FounderStory() {
               {/* Animated glow sweep */}
               <div className="absolute inset-0 opacity-0 hover:opacity-100 transition duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] hover:translate-x-[100%]" />
 
-              "If we can build national financial and digital infrastructure at scale, we can build resilience infrastructure for glaciers."
+              &quot;If we can build national financial and digital infrastructure at scale, we can build resilience infrastructure for glaciers.&quot;
             </motion.blockquote>
 
           </motion.div>
