@@ -10,7 +10,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(true);
   const [desktopDropdown, setDesktopDropdown] = useState(null);
   const [mobileDropdown, setMobileDropdown] = useState(null);
-  const [isActive, setIsActive] = useState("/");
 
   const pathname = usePathname();
   const navRef = useRef(null);
@@ -29,7 +28,7 @@ export default function Navbar() {
         { label: "Founder Story", href: "/about/founder", desc: "Anurag Maloo's survival and vision." },
         { label: "Team & Advisors", href: "/about/team", desc: "The people driving the movement." },
         { label: "Partners & Networks", href: "/about/partners", desc: "Our institutional collaborators." },
-        
+
       ]
     },
     {
@@ -87,9 +86,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsActive(pathname);
-  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -118,7 +114,7 @@ export default function Navbar() {
       className={`fixed w-full z-50 transition-all duration-300 font-cabin rounded-b-xl ${isTransparent ? "bg-transparent py-4 border-b border-white/20" : "bg-white shadow-md py-2 border-b border-gray-100"}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-        <div className="flex justify-between h-14 items-center">
+        <div className="flex justify-between h-14 items-center gap-4">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
@@ -230,6 +226,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -243,28 +240,43 @@ export default function Navbar() {
               {structuredPages.map((link) => (
                 <div key={link.name}>
                   {link.subpages?.length > 0 ? (
-                    <button
-                      onClick={() =>
-                        setMobileDropdown((prev) =>
-                          prev === link.name ? null : link.name
-                        )
-                      }
-                      className="w-full flex justify-between items-center text-left text-white font-medium text-base py-2 font-nohemi"
-                    >
-                      {link.name}
-                      <motion.span
-                        animate={{ rotate: mobileDropdown === link.name ? 180 : 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="text-glacier-teal"
+
+                    <div className="w-full flex justify-between items-center py-2">
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex-grow text-left font-medium text-base font-nohemi transition-colors ${isLinkActive(link.href)
+                            ? "text-glacier-teal underline underline-offset-4"
+                            : "text-white"
+                          }`}
                       >
-                        <ChevronDown size={16} />
-                      </motion.span>
-                    </button>
+                        {link.name}
+                      </Link>
+
+                      <button
+                        onClick={() =>
+                          setMobileDropdown((prev) => (prev === link.name ? null : link.name))
+                        }
+                        className="p-2 -mr-2 text-white hover:text-glacier-teal transition-colors"
+                        aria-label={`Toggle ${link.name} submenu`}
+                      >
+                        <motion.span
+                          animate={{ rotate: mobileDropdown === link.name ? 180 : 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="inline-block"
+                        >
+                          <ChevronDown size={16} />
+                        </motion.span>
+                      </button>
+                    </div>
                   ) : (
                     <Link
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="block text-white font-medium text-base py-2 font-nohemi"
+                      className={`block font-medium text-base py-2 font-nohemi transition-colors ${isLinkActive(link.href)
+                          ? "text-glacier-teal underline underline-offset-4"
+                          : "text-white"
+                        }`}
                     >
                       {link.name}
                     </Link>
@@ -288,7 +300,10 @@ export default function Navbar() {
                                 setIsOpen(false);
                                 setMobileDropdown(null);
                               }}
-                              className="block text-white/80 text-sm hover:text-glacier-teal transition-colors font-cabin py-1.5"
+                              className={`block text-sm transition-colors font-cabin py-1.5 ${isLinkActive(subpage.href)
+                                  ? "text-glacier-teal underline underline-offset-4 font-bold"
+                                  : "text-white/80 hover:text-glacier-teal"
+                                }`}
                             >
                               {subpage.label}
                             </Link>

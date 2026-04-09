@@ -95,7 +95,7 @@ export default function GlacierDialoguesPage() {
       {/* Past Sessions Archive */}
       <section className="py-24 px-6 md:px-12 bg-white border-t border-glacier-light">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start mb-16 gap-6">
             <div>
               <p className="text-glacier-warmGrey text-[10px] font-bold tracking-[0.2em] uppercase mb-4">Archive</p>
               <h2 className="text-3xl md:text-4xl font-nohemi font-bold text-glacier-navy">Sessions Archive</h2>
