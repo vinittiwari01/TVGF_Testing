@@ -2,6 +2,7 @@ import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function HCSNPage() {
     return (
@@ -133,13 +134,31 @@ export default function HCSNPage() {
                         
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 flex items-center justify-center aspect-[2/1] hover:bg-white/10 transition-colors group">
-                                <img src="/footer/MoES.png" alt="Ministry of Earth Sciences" className="h-12 object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity" />
+                                <Image
+                                    src="/footer/MoES.png"
+                                    alt="Ministry of Earth Sciences"
+                                    width={160}
+                                    height={48}
+                                    className="h-12 w-auto object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity"
+                                />
                             </div>
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 flex items-center justify-center aspect-[2/1] hover:bg-white/10 transition-colors group">
-                                <img src="/footer/ICIMOD.png" alt="ICIMOD" className="h-12 object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity" />
+                                <Image
+                                    src="/footer/ICIMOD.png"
+                                    alt="ICIMOD"
+                                    width={160}
+                                    height={48}
+                                    className="h-12 w-auto object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity"
+                                />
                             </div>
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 flex items-center justify-center aspect-[2/1] hover:bg-white/10 transition-colors group">
-                                <img src="/footer/ndma.png" alt="NDMA" className="h-12 object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity" />
+                                <Image
+                                    src="/footer/ndma.png"
+                                    alt="NDMA"
+                                    width={160}
+                                    height={48}
+                                    className="h-12 w-auto object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity"
+                                />
                             </div>
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 flex items-center justify-center aspect-[2/1] hover:bg-white/10 transition-colors group">
                                 <span className="font-nohemi text-sm tracking-widest text-white/50 uppercase group-hover:text-white transition-colors">Wadia Institute</span>
@@ -154,7 +173,13 @@ export default function HCSNPage() {
                                 <span className="font-nohemi text-sm tracking-widest text-white/50 uppercase group-hover:text-white transition-colors">ISRO</span>
                             </div>
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 flex items-center justify-center aspect-[2/1] hover:bg-white/10 transition-colors group">
-                                <img src="/footer/iitb.png" alt="IIT B" className="h-10 object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity" />
+                                <Image
+                                    src="/footer/iitb.png"
+                                    alt="IIT B"
+                                    width={120}
+                                    height={40}
+                                    className="h-10 w-auto object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity"
+                                />
                             </div>
                         </div>
                     </div>

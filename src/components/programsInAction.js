@@ -103,9 +103,9 @@ export default function ProgramsSnapshot() {
                     </p>
 
                     {/* Action Icon */}
-                    <div className="w-8 h-8 rounded-full bg-transparent group-hover:bg-glacier-teal flex items-center justify-center transition-all duration-300 border border-transparent group-hover:border-glacier-teal shadow-none group-hover:shadow-md">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 border shadow-md bg-glacier-teal border-glacier-teal md:bg-transparent md:border-transparent md:shadow-none md:group-hover:bg-glacier-teal md:group-hover:border-glacier-teal md:group-hover:shadow-md">
                       <svg
-                        className="w-4 h-4 text-glacier-teal group-hover:text-white transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-out"
+                        className="w-4 h-4 transform transition-all duration-300 ease-out text-white translate-x-0 opacity-100 md:text-glacier-teal md:-translate-x-2 md:opacity-0 md:group-hover:text-white md:group-hover:translate-x-0 md:group-hover:opacity-100"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -130,8 +130,8 @@ export default function ProgramsSnapshot() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex justify-center mt-8"
         >
-          <Link 
-            href="/programs" 
+          <Link
+            href="/programs"
             className="group inline-flex items-center gap-2 bg-transparent border-2 border-glacier-teal text-glacier-teal hover:bg-glacier-teal hover:text-white font-cabin text-base font-medium rounded-md px-8 py-4 transition-all duration-300"
           >
             See All Programmes
