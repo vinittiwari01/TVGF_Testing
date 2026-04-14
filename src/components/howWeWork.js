@@ -6,7 +6,7 @@ export default function HowWeWorkSection() {
   const engines = [
     {
       id: "Engine 1",
-      title: "TVGF Foundation",
+      title: "The Voice of Glacier Foundation",
       subtitle: "Movement & Community",
       role: "Insights, Research, Policy.",
       description: "Builds awareness, anchors community trust, and runs pilots.",

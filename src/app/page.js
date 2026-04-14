@@ -14,10 +14,10 @@ export default function HomePage() {
 
   const stats = [
     {
-      number: "54,000",
+      number: "63,700",
       text: "glaciers in the HKH region — losing ice 65% faster than a decade ago",
-      textColor: "text-glacier-crimson",
-      lineColor: "bg-glacier-crimson",
+      textColor: "text-white",
+      lineColor: "bg-white",
     },
     {
       number: "2 Billion+",
@@ -28,8 +28,8 @@ export default function HomePage() {
     {
       number: "< 0.1%",
       text: "of $1.9 trillion in global climate finance reaches glaciers",
-      textColor: "text-glacier-crimson",
-      lineColor: "bg-glacier-crimson",
+      textColor: "text-white",
+      lineColor: "bg-white",
     },
   ];
 
@@ -62,7 +62,7 @@ export default function HomePage() {
                   {stat.number}
                 </h3>
 
-                <p className="font-cabin text-white/70 group-hover:text-white transition-all duration-500 text-[14px] leading-relaxed transform group-hover:translate-x-2">
+                <p className="font-cabin text-white/70 group-hover:text-white transition-all duration-500 text-[14px] leading-relaxed transform group-hover:translate-x-2 text-left">
                   {stat.text}
                 </p>
               </motion.div>
@@ -135,7 +135,6 @@ export default function HomePage() {
           </div>
         </motion.div>
       </section>
-
 
       <Footer />
     </div>
