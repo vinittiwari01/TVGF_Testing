@@ -113,7 +113,7 @@ export default function OurStory() {
                             </div>
                             <h2 className="text-[10px] font-nohemi text-glacier-teal tracking-[0.4em] uppercase mb-8 opacity-60 group-hover:text-white transition-opacity">The Vision</h2>
                             <p className="text-2xl md:text-3xl text-glacier-navy font-nohemi italic leading-tight group-hover:text-white transition-colors">
-                                &quot;A world where protected glaciers secure water security, climate stability, and resilient futures for all.&quot;
+                                &quot;A world where protected glaciers secure water security, climate stability, and resilient futures.&quot;
                             </p>
                         </motion.div>
 

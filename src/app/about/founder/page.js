@@ -40,10 +40,10 @@ export default function FounderStory() {
     ];
 
     const photos = [
-        { url: "/story/hkh.jpg", caption: "Mt. Annapurna Expedition, 2023" },
-        { url: "/story/decade.png", caption: "High Altitude Monitoring, Ladakh" },
-        { url: "/story/gap.png", caption: "Science Reconnaissance, Uttarakhand" },
-        { url: "/story/crisiss.jpg", caption: "Community Dialogue, Sikkim" }
+        { url: "/annapurna.jpg", caption: "Mt. Annapurna Expedition, 2023" },
+        { url: "/ladakh.jpg", caption: "High Altitude Monitoring, Ladakh" },
+        { url: "/ukfootprint.jpg", caption: "Science Reconnaissance, Uttarakhand" },
+        { url: "/sikkim.jpg", caption: "Community Dialogue, Sikkim" }
     ];
 
     return (
@@ -183,7 +183,7 @@ export default function FounderStory() {
                             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-glacier-teal font-nohemi px-4 py-1.5 border border-glacier-teal/20 rounded-full">Expedition Archives</span>
                             <h2 className="text-4xl md:text-6xl font-nohemi text-glacier-navy mt-8 tracking-tight italic">Polar & Himalayan <span className="text-glacier-teal">Footprints</span></h2>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                             {photos.map((p, i) => (
                                 <motion.div 
                                     key={i}
@@ -191,7 +191,7 @@ export default function FounderStory() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.05, duration: 0.5 }}
-                                    className="group relative aspect-[3/4] rounded-[3rem] overflow-hidden bg-glacier-navy shadow-2xl"
+                                    className="group relative aspect-[16/9] rounded-[2rem] overflow-hidden bg-glacier-navy shadow-2xl"
                                 >
                                     <img src={p.url} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" alt={p.caption} />
                                     <div className="absolute inset-0 bg-gradient-to-t from-glacier-navy/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
