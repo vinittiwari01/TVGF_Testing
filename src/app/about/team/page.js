@@ -87,7 +87,7 @@ export default function TeamPage() {
                                     transition={{ delay: i * 0.05, duration: 0.6 }}
                                     className="flex flex-col group"
                                 >
-                                    <div className="w-[85%] mx-auto block aspect-[4/5] rounded-[3rem] overflow-hidden mb-8 shadow-2xl shadow-glacier-navy/10 relative">
+                                    <div className="w-[78%] md:w-[80%] mx-auto block aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 shadow-2xl shadow-glacier-navy/10 relative">
                                         <img 
                                             src={member.img} 
                                             className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
@@ -111,7 +111,7 @@ export default function TeamPage() {
                         <div className="text-center mb-24">
                             <h2 className="text-4xl md:text-6xl font-nohemi text-glacier-navy tracking-tight">Expert <span className="text-glacier-teal italic">Panel</span></h2>
                         </div>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 lg:gap-x-8 gap-y-14">
                             {expertPanel.map((exp, i) => (
                                 <motion.div 
                                     key={i} 
@@ -119,16 +119,16 @@ export default function TeamPage() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.05, duration: 0.5 }}
-                                    className="group text-center"
+                                    className="group text-center max-w-[240px] mx-auto w-full"
                                 >
-                                    <div className="w-full aspect-square rounded-[2rem] overflow-hidden mb-6 shadow-[0_20px_40px_-15px_rgba(0,128,128,0.1)] relative">
+                                    <div className="w-[76%] md:w-[80%] mx-auto aspect-[4/5] rounded-[1.75rem] overflow-hidden mb-5 shadow-[0_20px_40px_-15px_rgba(0,128,128,0.1)] relative">
                                         <img 
                                             src={exp.img} 
                                             className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" 
                                             alt={exp.name} 
                                         />
                                     </div>
-                                    <h4 className="text-xl font-nohemi text-glacier-navy mb-2 group-hover:text-glacier-teal transition-colors leading-tight">{exp.name}</h4>
+                                    <h4 className="text-lg md:text-xl font-nohemi text-glacier-navy mb-2 group-hover:text-glacier-teal transition-colors leading-tight">{exp.name}</h4>
                                     <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-glacier-navy/50 mb-3">{exp.niche}</p>
                                     <p className="text-[10px] text-glacier-teal font-medium leading-tight uppercase tracking-widest">{exp.institution}</p>
                                 </motion.div>
