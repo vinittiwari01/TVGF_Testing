@@ -5,13 +5,14 @@ import Link from 'next/link';
 
 const sessionsData = [
   {
-    _id: "GD5",
+    _id: "GD4",
     topic: "Glacier Dialogue 4",
     title: "They Are Already on Ventilator",
     date: "2026-04-01T10:00:00Z",
     status: "upcoming", 
     videoUrl: null,
     image: "https://wallpaperaccess.com/full/2150664.jpg",
+    substackUrl: "",
     panelists: [
       { name: "Jaimitra Singh Bisht", role: "Expert Panelist" },
       { name: "Anup Sah", role: "Expert Panelist" },
@@ -24,13 +25,14 @@ const sessionsData = [
     ]
   },
   {
-    _id: "GD4",
+    _id: "GD3",
     topic: "Glacier Dialogue 3 / UN Side Event",
     title: "From Risk to Resilience: What It Will Actually Take",
     date: "2026-03-19T10:00:00Z",
     status: "completed",
     videoUrl: null,
     image: "/dialogues/gd1.jpeg",
+    substackUrl: "https://thevoiceofglaciers.substack.com/p/from-risk-to-resilience-what-glacier",
     panelists: [
       { name: "Dr. Aparna Shukla", role: "MoES" },
       { name: "Dr. Ashim Sattar", role: "IIT Bhubaneswar" },
@@ -51,6 +53,7 @@ const sessionsData = [
     status: "completed",
     videoUrl: null,
     image: "https://static.vecteezy.com/system/resources/previews/000/742/601/large_2x/himalayas-mountain-landscape-photo.jpg",
+    substackUrl: "https://thevoiceofglaciers.substack.com/p/when-glaciers-retreat-societies-transform",
     panelists: [
       { name: "Anoop Nautiyal", role: "Founder, SDC Foundation" },
       { name: "Varsha Singh", role: "Independent Journalist" }
@@ -69,6 +72,7 @@ const sessionsData = [
     status: "completed",
     videoUrl: null,
     image: "/dialogues/gd2.png",
+    substackUrl: "https://thevoiceofglaciers.substack.com/p/glaciers-are-not-just-melting-they",
     panelists: [
       { name: "Dr. Ashim Sattar", role: "IIT Bhubaneswar" },
       { name: "Dr. Mohd Farooq Azam", role: "ICIMOD" }
@@ -177,7 +181,9 @@ export default function GlacierDialoguesSessionsPage() {
                       </Link>
                     ) : (
                       <Link 
-                        href={`/media/sessions/${session._id}`} 
+                        href={session.substackUrl} 
+                        target='_blank'
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm font-bold font-cabin text-glacier-navy hover:text-glacier-teal transition-colors"
                       >
                         Read full summary on Substack <span>→</span>

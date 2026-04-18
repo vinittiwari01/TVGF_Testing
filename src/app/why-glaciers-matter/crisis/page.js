@@ -101,38 +101,71 @@ const CrisisPage = () => {
             </section>
 
             {/* 🏗️ The Cascade Effect Flow */}
-            <section className="py-32 px-6 md:px-12 bg-white relative">
-                <div className="max-w-7xl mx-auto">
-                    <div className="mb-20">
-                        <h2 className="text-4xl md:text-6xl font-nohemi text-glacier-navy leading-none mb-4">
-                            The Cascade <span className="text-glacier-teal">Effect</span>
+            <section className="py-32 px-6 md:px-12 bg-glacier-offwhite relative overflow-hidden">
+                {/* Background Decorative Gradient */}
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-glacier-teal/5 blur-[100px] rounded-full -translate-y-1/4 translate-x-1/3 pointer-events-none"></div>
+
+                <div className="max-w-7xl mx-auto relative z-10">
+                    <div className="mb-20 text-center">
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-nohemi text-glacier-navy leading-none mb-6">
+                            The Cascade <span className="text-glacier-teal italic">Effect</span>
                         </h2>
-                        <p className="text-glacier-navy/60 max-w-xl text-lg font-light">
-                            Visualizing the domino effect: how melting peaks systematically dismantle human and ecological security.
+                        <p className="text-glacier-navy/60 max-w-2xl text-lg md:text-xl font-light mx-auto">
+                            A visual sequence of systemic breakdown. As the ice vanishes, the dominoes fall across human and ecological security.
                         </p>
                     </div>
 
-                    <div className="relative">
+                    {/* The Cascade Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative pb-12 lg:pb-32">
+                        
                         {/* Connecting Line (Desktop) */}
-                        <div className="absolute top-1/2 left-0 w-full h-[2px] bg-glacier-offwhite z-0 hidden lg:block -translate-y-1/2"></div>
+                        <div className="hidden lg:block absolute top-[30%] left-[10%] w-[80%] h-[2px] bg-gradient-to-r from-transparent via-glacier-teal to-glacier-crimson z-0 opacity-40 blur-[1px]"></div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 relative z-10">
-                            {actualCascade.map((step, index) => (
+                        {actualCascade.map((step, index) => {
+                            // Creates a physical "Staircase/Cascade" layout on desktop
+                            const cascadeOffset = 
+                                index % 3 === 0 ? "lg:translate-y-0" : 
+                                index % 3 === 1 ? "lg:translate-y-16" : 
+                                "lg:translate-y-32";
+
+                            return (
                                 <motion.div
                                     key={index}
-                                    initial={{ y: 20, opacity: 0 }}
+                                    initial={{ y: 50, opacity: 0 }}
                                     whileInView={{ y: 0, opacity: 1 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="bg-glacier-offwhite p-8 rounded-2xl border-b-4 border-glacier-teal shadow-xl shadow-glacier-navy/5 flex flex-col items-center justify-center text-center group"
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ 
+                                        duration: 0.8, 
+                                        delay: index * 0.15, 
+                                        ease: "easeOut" 
+                                    }}
+                                    className={`relative bg-white rounded-[2rem] p-8 md:p-10 border border-glacier-navy/5 shadow-xl shadow-glacier-navy/5 group hover:border-glacier-teal/30 hover:shadow-2xl hover:shadow-glacier-teal/10 transition-all duration-500 z-10 ${cascadeOffset}`}
                                 >
-                                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-glacier-teal mb-6 shadow-inner group-hover:bg-glacier-teal group-hover:text-white transition-colors duration-300">
-                                        <span className="font-nohemi font-bold text-lg">{index + 1}</span>
+                                    {/* Premium Watermark Numbering */}
+                                    <div className="absolute -bottom-4 -right-2 text-[140px] font-nohemi font-bold text-glacier-navy/[0.03] group-hover:text-glacier-teal/[0.08] transition-colors duration-700 pointer-events-none leading-none select-none">
+                                        0{index + 1}
                                     </div>
-                                    <p className="font-nohemi text-sm md:text-base text-glacier-navy leading-tight uppercase tracking-wider">{step}</p>
+
+                                    {/* Card Content */}
+                                    <div className="relative z-10 flex flex-col h-full min-h-[160px] justify-between">
+                                        <div className="flex justify-between items-start">
+                                            {/* Animated Directional Icon */}
+                                            <div className="w-12 h-12 rounded-full bg-glacier-offwhite border border-glacier-navy/5 flex items-center justify-center text-glacier-navy/40 group-hover:bg-glacier-teal group-hover:text-white transition-all duration-500 shadow-sm">
+                                                <FaArrowRight className="rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                            </div>
+                                            
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-glacier-crimson/70 group-hover:text-glacier-crimson transition-colors">
+                                                Phase {index + 1}
+                                            </span>
+                                        </div>
+                                        
+                                        <h3 className="font-nohemi text-2xl md:text-3xl text-glacier-navy font-bold leading-tight mt-12 group-hover:text-glacier-teal transition-colors duration-300">
+                                            {step}
+                                        </h3>
+                                    </div>
                                 </motion.div>
-                            ))}
-                        </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>

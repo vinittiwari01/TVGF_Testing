@@ -15,18 +15,18 @@ export const InstitutionalPartners = () => {
                     </h2>
                 </div>
 
-                {/* Logo Strip (Greyscale to Color on Hover) */}
+                {/* Logo Strip */}
                 <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
                     {/* Available Logos */}
-                    <Image src="/footer/ICIMOD.png" alt="ICIMOD" width={180} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
-                    <Image src="/footer/MoES.png" alt="Ministry of Earth Sciences" width={200} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
-                    <Image src="/footer/WMO.png" alt="WMO" width={200} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
-                    <Image src="/footer/unep.png" alt="UNEP" width={200} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
-                    <Image src="/footer/iitb.png" alt="iitb" width={200} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
-                    <Image src="/footer/ndma.png" alt="NDMA" width={200} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
-                    <Image src="/footer/UNDP.webp" alt="UNDP" width={200} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
-                    <Image src="/footer/UNESCO.png" alt="UNESCO" width={200} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
-                    <Image src="/footer/COInt.png" alt="Conservation Int." width={200} height={100} className="object-contain h-12 w-auto opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
+                    <Image src="/footer/ICIMOD.png" alt="ICIMOD" width={180} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
+                    <Image src="/footer/MoES.png" alt="Ministry of Earth Sciences" width={200} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
+                    <Image src="/footer/WMO.png" alt="WMO" width={200} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
+                    <Image src="/footer/unep.png" alt="UNEP" width={200} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
+                    <Image src="/footer/iitb.png" alt="iitb" width={200} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
+                    <Image src="/footer/ndma.png" alt="NDMA" width={200} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
+                    <Image src="/footer/UNDP.webp" alt="UNDP" width={200} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
+                    <Image src="/footer/UNESCO.png" alt="UNESCO" width={200} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
+                    <Image src="/footer/COInt.png" alt="Conservation Int." width={200} height={100} className="object-contain h-12 w-auto opacity-50 hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 <div className="mt-16 inline-flex flex-col items-center">

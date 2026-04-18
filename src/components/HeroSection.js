@@ -60,35 +60,35 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section 
-      ref={heroRef} 
+    <section
+      ref={heroRef}
       className="relative w-full h-[100vh] min-h-[600px] overflow-hidden bg-glacier-navy"
     >
       {/* Layer 1 */}
-      <div 
+      <div
         ref={skyRef}
         className="absolute left-0 top-0 w-full z-0 bg-cover bg-center"
-        style={{ 
+        style={{
           backgroundImage: "url('/home/bg-main.jpg')",
-          height: "120%", 
+          height: "120%",
         }}
       />
 
       {/* Layer 2 */}
-      <div 
+      <div
         ref={mountainRef}
         className="absolute left-0 top-0 w-full z-10 bg-cover bg-center"
-        style={{ 
+        style={{
           backgroundImage: "url('/home/mid-mountains.png')",
           height: "120%",
         }}
       />
 
       {/* Layer 3 */}
-      <div 
+      <div
         ref={foregroundRef}
         className="absolute left-0 w-full z-20 bg-cover bg-bottom bg-no-repeat"
-        style={{ 
+        style={{
           backgroundImage: "url('/home/front-green.png')",
           height: "120%",
           bottom: "-20%",
@@ -125,7 +125,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-3xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-4xl font-nohemi drop-shadow-lg"
+          className="text-3xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-4xl font-nohemi text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] [-webkit-text-stroke:0.8px_#2a787c]"
         >
           Protecting Glaciers.
           <br />
@@ -133,14 +133,16 @@ export default function HeroSection() {
         </motion.h1>
 
         {/* Subtext */}
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-6 text-sm md:text-xl text-white max-w-2xl font-medium font-cabin drop-shadow-md"
         >
-          A Section 8 nonprofit building preparedness and institutional capacity in glacier-dependent regions of the Hindu Kush Himalaya.
-        </motion.p>
+          <p className="mt-6 text-sm md:text-xl text-white bg-white/10 backdrop-blur-md border border-white/10 px-6 py-3 rounded-2xl max-w-2xl font-medium font-cabin ">
+            A Section 8 nonprofit building preparedness and institutional capacity in glacier-dependent regions of the Hindu Kush Himalaya.
+          </p>
+        </motion.div>
+
 
         {/* CTA Buttons */}
         <motion.div

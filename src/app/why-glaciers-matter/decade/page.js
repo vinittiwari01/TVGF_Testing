@@ -4,7 +4,7 @@ import React from 'react';
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaClock, FaExclamationCircle, FaChartPie, FaCalendarAlt, FaWater } from 'react-icons/fa';
+import { FaArrowRight, FaCalendarAlt, FaExclamationCircle, FaChartPie, FaWater } from 'react-icons/fa';
 
 const DecadePage = () => {
     // Exact GLOF timeline from the brief
@@ -61,21 +61,22 @@ const DecadePage = () => {
                         animate={{ opacity: 1, y: 0 }} 
                         transition={{ duration: 1.2, ease: "easeOut" }}
                     >
-                        <span className="inline-block text-glacier-crimson font-nohemi font-bold tracking-[0.5em] text-[10px] md:text-xs uppercase mb-12 bg-white/5 px-8 py-3 rounded-full border border-white/10 backdrop-blur-xl">
+                        {/* Changed to glacier-lightTeal from tailwind.config.js */}
+                        <span className="inline-block text-glacier-lightTeal font-nohemi font-bold tracking-[0.5em] text-[10px] md:text-xs uppercase mb-12 bg-white/5 px-8 py-3 rounded-full border border-white/10 backdrop-blur-xl">
                             The Critical Window
                         </span>
                         <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-nohemi text-white mb-10 leading-[0.8] tracking-tighter drop-shadow-2xl">
                             The Decisive <br />
-                            <span className="text-glacier-crimson italic">Decade</span>
+                            <span className="text-glacier-lightTeal italic">Decade</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-white/50 font-light font-cabin max-w-3xl mx-auto mt-10">
-                            The years 2025–2034 represent the final threshold for cryospheric stability in the Hindu Kush Himalaya.
+                            The years 2025–2034 represent the final threshold for cryospheric stability globally.
                         </p>
 
                         <motion.div 
                             animate={{ y: [0, 15, 0] }}
                             transition={{ repeat: Infinity, duration: 2.5 }}
-                            className="mt-20 flex flex-col items-center gap-4 text-white/20 cursor-pointer hover:text-glacier-crimson transition-colors"
+                            className="mt-20 flex flex-col items-center gap-4 text-white/20 cursor-pointer hover:text-glacier-lightTeal transition-colors"
                         >
                             <span className="font-nohemi text-[10px] uppercase tracking-[0.3em]">Critical Timeline</span>
                             <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center">
@@ -87,15 +88,15 @@ const DecadePage = () => {
             </section>
 
             {/* 🚨 TIPPING POINT ALERT */}
-            <section className="py-24 px-6 bg-glacier-navy text-white text-center border-b-[20px] border-glacier-crimson">
+            <section className="py-24 px-6 bg-glacier-navy text-white text-center border-b-[20px] border-glacier-lightTeal">
                 <div className="max-w-4xl mx-auto">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-glacier-crimson/20 border border-glacier-crimson/50 rounded-full mb-8">
-                        <span className="w-2.5 h-2.5 rounded-full bg-glacier-crimson animate-pulse"></span>
-                        <span className="text-glacier-crimson font-nohemi tracking-widest uppercase text-xs font-bold">Tipping Point Alert</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-glacier-lightTeal/20 border border-glacier-lightTeal/50 rounded-full mb-8">
+                        <span className="w-2.5 h-2.5 rounded-full bg-glacier-lightTeal animate-pulse"></span>
+                        <span className="text-glacier-lightTeal font-nohemi tracking-widest uppercase text-xs font-bold">Tipping Point Alert</span>
                     </div>
                     <h2 className="text-3xl md:text-5xl font-nohemi leading-tight tracking-tight">
                         &quot;13 October 2025 — first confirmed climate tipping point (coral mortality).<br />
-                        <span className="text-glacier-crimson italic">Glaciers are next.</span>&quot;
+                        <span className="text-glacier-lightTeal italic">Glaciers are next.</span>&quot;
                     </h2>
                 </div>
             </section>
@@ -117,9 +118,9 @@ const DecadePage = () => {
                             <div className="flex items-center gap-4 text-glacier-navy text-[10px] font-bold uppercase tracking-[0.2em] mb-6 font-cabin relative z-10">
                                 <FaExclamationCircle className="text-lg" /> <span>The Science</span>
                             </div>
-                            <h3 className="text-2xl md:text-4xl font-nohemi text-glacier-navy mb-6 tracking-tight relative z-10 leading-none">HKH cryosphere is warming 2x faster than the global average.</h3>
+                            <h3 className="text-2xl md:text-4xl font-nohemi text-glacier-navy mb-6 tracking-tight relative z-10 leading-none">Globally, the cryosphere is warming 2x faster than the global average.</h3>
                             <p className="text-lg font-light text-glacier-navy/60 leading-relaxed relative z-10">
-                                At current rates, 75% of Himalayan glaciers could disappear by 2100. Even 1.5°C is not safe for this region.
+                                At current rates, 75% of global glaciers could disappear by 2100. Even 1.5°C is not safe globally.
                             </p>
                         </motion.div>
 

@@ -137,14 +137,14 @@ export default function OurStory() {
 
                     {/* SPACE Framework - Balanced Grid */}
                     <div
-                        className="mb-32"
+                        className="mb-32 max-w-7xl mx-auto px-4"
                         onMouseEnter={() => setIsHoveringFramework(true)}
                         onMouseLeave={() => setIsHoveringFramework(false)}
                     >
-                        <h2 className="text-2xl md:text-4xl font-nohemi text-glacier-navy text-center mb-16 tracking-tight">
+                        <h2 className="text-2xl md:text-5xl font-nohemi text-glacier-navy text-center mb-16 tracking-tight">
                             The <span className="text-glacier-teal italic">SPACE</span> Framework
                         </h2>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
                             {framework.map((f, i) => (
                                 <motion.div
                                     key={f.k}
@@ -152,15 +152,26 @@ export default function OurStory() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                                    className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-glacier-navy/5 shadow-2xl shadow-glacier-navy/5 text-center group hover:bg-glacier-navy hover:text-white transition-all duration-500 cursor-none relative overflow-hidden"
+                                    whileHover={{ y: -8 }}
+                                    className="bg-white p-6 lg:p-8 rounded-[2rem] border border-glacier-navy/5 shadow-2xl shadow-glacier-navy/5 text-center group hover:bg-glacier-navy hover:text-white transition-all duration-500 cursor-none relative overflow-hidden flex flex-col justify-between h-full"
                                 >
                                     <div className="absolute top-0 left-0 w-full h-1 bg-glacier-teal/10 group-hover:bg-glacier-teal transition-all duration-500"></div>
-                                    <div className="text-glacier-teal text-3xl mb-8 group-hover:text-white transition-colors flex justify-center">
-                                        {f.icon}
+
+                                    <div>
+                                        <div className="text-glacier-teal text-4xl mb-6 group-hover:text-white transition-colors flex justify-center drop-shadow-sm group-hover:scale-110 duration-500">
+                                            {f.icon}
+                                        </div>
+
+                                        <h3 className="text-3xl font-nohemi text-glacier-navy mb-2 group-hover:text-white transition-colors">
+                                            {f.k}
+                                        </h3>
+
+                                        <span className="block text-[9px] md:text-[11px] font-bold uppercase tracking-[0.3em] text-glacier-teal mb-4 group-hover:text-white/60 transition-colors">
+                                            {f.t}
+                                        </span>
                                     </div>
-                                    <h3 className="text-3xl font-nohemi text-glacier-navy mb-2 group-hover:text-white transition-colors">{f.k}</h3>
-                                    <span className="block text-[8px] font-bold uppercase tracking-[0.3em] text-glacier-teal mb-6 group-hover:text-white/60">{f.t}</span>
-                                    <p className="text-[10px] md:text-xs font-light leading-relaxed font-cabin group-hover:text-white/80 transition-colors">
+
+                                    <p className="text-xs md:text-sm font-light leading-relaxed font-cabin text-glacier-navy/70 group-hover:text-white/90 transition-colors mt-2">
                                         {f.d}
                                     </p>
                                 </motion.div>
@@ -199,10 +210,10 @@ export default function OurStory() {
                     {/* Professional Theory of Change - Zig-Zag Scroll Flow */}
                     <div className="mb-32 theory-container border-t border-glacier-navy/5 pt-24">
                         <div className="text-center mb-24">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-glacier-teal font-nohemi mb-4 inline-block">Evolution Model</span>
+                            <span className="text-xs font-bold uppercase tracking-[0.3em] text-glacier-teal font-nohemi mb-4 inline-block">Evolution Model</span>
                             <h2 className="text-4xl md:text-6xl font-nohemi text-glacier-navy tracking-tight">Theory of <span className="text-glacier-teal italic">Change</span></h2>
                         </div>
-                        
+
                         <div className="max-w-7xl mx-auto px-4 overflow-hidden">
                             {theorySteps.map((step, i) => (
                                 <TheoryStepCard key={step.title} step={step} index={i} />
@@ -256,22 +267,22 @@ function TheoryStepCard({ step, index }) {
 
     return (
         <div ref={ref} className={`flex flex-col md:flex-row items-center gap-10 lg:gap-20 mb-24 md:mb-40 ${isReverse ? 'md:flex-row-reverse' : ''}`}>
-            
+
             {/* Image unmasking via Framer Motion useScroll */}
-            <motion.div 
+            <motion.div
                 style={{ clipPath: isReverse ? clipPathRight : clipPathLeft }}
                 className="w-full md:w-1/2 aspect-[4/3] rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,128,128,0.2)] relative overflow-hidden will-change-transform"
             >
-                <img 
-                    src={step.img} 
-                    alt={step.title} 
-                    className="w-full h-full object-cover brightness-95 hover:brightness-100 hover:scale-105 transition-all duration-700" 
+                <img
+                    src={step.img}
+                    alt={step.title}
+                    className="w-full h-full object-cover brightness-95 hover:brightness-100 hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute inset-0 border-[0.5px] border-white/30 rounded-[2.5rem] z-10 pointer-events-none"></div>
             </motion.div>
-            
+
             {/* Content fading in normally */}
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -284,7 +295,7 @@ function TheoryStepCard({ step, index }) {
                     {step.desc}
                 </p>
             </motion.div>
-        
+
         </div>
     );
 }

@@ -23,7 +23,7 @@ export const FounderOrigin = () => {
           </div>
 
           <h3 className="text-3xl md:text-5xl font-nohemi font-bold text-glacier-navy mb-6 leading-tight">
-            A survival story that became a global responsibility.
+            A survival story that became a responsibility.
           </h3>
 
           <div className="font-cabin text-glacier-warmGrey text-lg leading-relaxed space-y-4 mb-8">
